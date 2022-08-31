@@ -1,5 +1,6 @@
 class RobokassaController < ActionController::Base
   before_action :create_notification
+  skip_before_action :verify_authenticity_token, only: %i[result success fail]
 
   def result
     if @notification.valid_result_signature?
