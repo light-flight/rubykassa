@@ -57,8 +57,7 @@ module Rubykassa
 
     def shpfy_params
       @params = @params.map do |param_name|
-        # REFACTOR: #to_sym on params-based strings will cause memory bloat on Ruby prior to 2.2
-        ["shp#{param_name[0]}".to_sym, param_name[1]]
+        ["shp_#{param_name[0]}".to_sym, param_name[1]]
       end
     end
   end
