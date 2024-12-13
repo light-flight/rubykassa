@@ -14,7 +14,8 @@ module Rubykassa
       currency:    'IncCurrLabel'.freeze,
       description: 'Desc'.freeze,
       culture:     'Culture'.freeze,
-      is_test:     'IsTest'.freeze
+      is_test:     'IsTest'.freeze,
+      receipt:     'Receipt'.freeze
     }.freeze
 
     attr_accessor :invoice_id, :total, :params
@@ -29,8 +30,8 @@ module Rubykassa
     end
 
     def pay_url(extra_params = {})
-      extra_params = extra_params.slice :currency, :description, :email,
-                                        :culture
+      @receipt = extra_params.delete(:receipt).to_json
+      extra_params = extra_params.slice :currency, :description, :email, :culture
       result_params = initial_options.merge(extra_params).map do |key, value|
         if key =~ /^shp/
           "#{key}=#{value}"
@@ -38,6 +39,7 @@ module Rubykassa
           "#{PARAMS_CONFORMITY[key]}=#{value}"
         end
       end
+      result_params << URI.encode_www_form([[PARAMS_CONFORMITY[:receipt], @receipt]])
       BASE_URL.dup << '?' << result_params.compact.join('&')
     end
 
