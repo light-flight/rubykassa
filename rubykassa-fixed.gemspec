@@ -5,14 +5,13 @@ require "rubykassa/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "rubykassa"
+  s.name        = "rubykassa-fixed"
   s.version     = Rubykassa::VERSION
-  s.authors     = ["Sergey Kishenin"]
-  s.email       = ["sergey.kishenin@gmail.com"]
-  s.homepage    = "http://github.com/ZeroOneStudio/rubykassa"
-  s.summary     = "Yet another Ruby wrapper for Robokassa API"
-  s.description = "Yet another Ruby wrapper for Robokassa API aimed to make Robokassa integration even more easier"
-  
+  s.authors     = ["Sergey Kishenin", "Georgy Yuriev"]
+  s.email       = ["sergey.kishenin@gmail.com", "georgy.yuriev@gmail.com"]
+  s.homepage    = "https://github.com/light-flight/rubykassa"
+  s.summary     = "Robokassa integration fixed"
+
   s.license     = "MIT"
 
   s.files       = `git ls-files`.split("\n")
